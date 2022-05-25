@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create poll</title>
+    <link rel="stylesheet" href="{% static 'create_poll.css' %}">
+</head>
+
+<body>
+    <div class="nav-bar">
+        <h2>The simple polling app</h2>
+    </div>
+    <div class="content-body">
+        <h3>Create the poll</h3>
+
+        <form class="poll-form" action="" method="POST">
+            {% csrf_token %}
+            <input type="text" name="poll_name" placeholder="Poll name" value="" required><br>
+            <input type="text" name="poll_description" placeholder="Poll description (optional)" value="">
+
+            <hr>
+            <div class="poll-questions-box">
+                <div class="Q1">
+                    <div>
+                        <label>Question: </label><br><input type="text" name="Q1" placeholder="Enter a question" value="" required><button type="button" class="Q1" onclick="delete_question(this.className)">remove</button>
+                    </div>
+                    <input type="text" name="Q1O1" class="Q1 O 1" placeholder="Option 1" value="" required><button type="button" class="Q1 B 1" onclick="delete_option(this.className)">remove</button><br>
+                    <input type="text" name="Q1O2" class="Q1 O 2" placeholder="Option 2" value="" required><button type="button" class="Q1 B 2" onclick="delete_option(this.className)">remove</button><br>
+                    <button type="button" class="Q1 B add-option" onclick="add_option(this.className)">add option</button>
+                    <hr>
+                </div>
+                <button type="button" class="add-question" onclick="add_question()">add question</button>
+            </div>
+            <button class="submit-form" onclick="submit_form()">Create the poll!</button>
+        </form>
+    </div>
+    <script src="{% static 'create_poll.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poll results</title>
+    <link rel="stylesheet" href="{% static 'poll_results.css' %}">
+</head>
+<body>
+    <div class="nav-bar">
+        <h2>The simple polling app</h2>
+    </div>
+    <div class="content-body">
+        
+        {% if poll %}
+        <h3>Poll results for: {{ poll.poll_name }}</h3>
+        <p>{{ poll.poll_description }}</p>
+
+        <div class="share-links-box">
+            <button onclick="copy_link('poll')">Share poll</button><button onclick="copy_link('results')">Share poll results</button>
+        </div>
+        
+        <div class="poll-body">
+            <p>Total responses so far, {{ total_resps }}</p>
+            <table>
+            {% for ques, ques_stat in poll_stats.items %}
+            <tr><td><h4>Q{{ ques }}.</h4></td><td colspan="3"><h4>{{ ques_stat.0 }}</h4></td></tr>
+                {% for resp, resp_count in ques_stat.1.items %}
+                <tr><td></td><td><label>{{ resp }}</label></td><td><progress value="{{ resp_count }}" max="100"></progress></td><td><label>{{ resp_count }}%</label></td></tr>
+                {% endfor %}
+            {% endfor %}
+            </table>
+        </div>
+        {% else %}
+        <h3>This poll doesn't exist</h3>
+        {% endif %}
+    </div>
+    <script>
+        function copy_link(source){
+            if (source == 'poll'){
+                navigator.clipboard.writeText('http:\/\/{{ request.get_host }}/respond?poll_id={{ poll.poll_id }}');
+                alert('Copied link');
+            }
+            if (source == "results"){
+                navigator.clipboard.writeText('http:\/\/{{ request.get_host }}/results?poll_id={{ poll.poll_id }}');
+                alert('Copied link');
+            }
+        }
+        
+    </script>
+</body>
+</html>

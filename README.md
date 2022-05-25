@@ -1,0 +1,1 @@
+# simple-polling-app-django

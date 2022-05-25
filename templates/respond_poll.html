@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Respond poll</title>
+    <link rel="stylesheet" href="{% static 'respond_poll.css' %}">
+</head>
+<body>
+    <div class="nav-bar">
+        <h2>The simple polling app</h2>
+    </div>
+    <div class="content-body">
+        {% if poll %}
+        <h3>You're responding to poll: {{ poll.poll_name }}</h3>
+        <p>{{ poll.poll_description }}</p>
+
+        <div class="poll-body">
+            <form action="" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="poll_id" value="{{ poll.poll_id }}">
+                {% for question in poll_questions %}
+                <h4>Q. {{ question.question_no }} {{ question.question }}</h4>
+                {% for options in question.question_options %}
+                <input name="{{ question.question_no }}" type="radio" value="{{ options }}"> <label>{{ options }}</label><br>
+                {% endfor %}
+                {% endfor %}
+                <br>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        {% else %}
+        <h3>This poll doesn't exist</h3>
+        {% endif %}
+    </div>
+</body>
+</html>

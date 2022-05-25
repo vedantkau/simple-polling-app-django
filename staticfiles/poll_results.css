@@ -1,0 +1,53 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0px;
+}
+.nav-bar{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(0, 76, 130);
+    margin: 0px;
+}
+.nav-bar h2{
+    margin: 5px;
+    padding: 10px;
+    color: white;
+}
+.content-body{
+    margin: 20px 20%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.content-body h3, .content-body p{
+    margin: 5px;
+    width: 100%;
+    text-align: center;
+}
+.poll-body{
+    width: 70%;
+    padding: 20px 0px;
+}
+.poll-body h4, .poll-body label, .poll-body p{
+    margin: 5px;
+    text-align: left;
+}
+.poll-body progress{
+    margin: 0px 5px;
+}
+.share-links-box{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 5px 0px;
+    padding: 5px 0px;
+}
+.share-links-box button{
+    background-color: rgb(0, 76, 130);
+    margin: 5px;
+    padding: 5px 0px;
+    color: white;
+    width: 20%;
+    border: 1px solid rgb(0, 76, 130);
+    border-radius: 3px;
+}

@@ -1,0 +1,42 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0px;
+}
+.nav-bar{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(0, 76, 130);
+    margin: 0px;
+}
+.nav-bar h2{
+    margin: 5px;
+    padding: 10px;
+    color: white;
+}
+.content-body{
+    margin: 20px 20%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.content-body h3, .content-body p{
+    margin: 5px;
+    width: 100%;
+    text-align: center;
+}
+.poll-body{
+    width: 70%;
+    padding: 20px 0px;
+}
+.poll-body h4{
+    margin: 5px;
+}
+.poll-body button{
+    width: calc(100% - 15px);
+    margin: 5px 0px;
+    padding: 10px 0px;
+    background-color: rgb(0, 76, 130);
+    color: white;
+    border: 1px solid rgb(0, 76, 130);
+    border-radius: 5px;
+}

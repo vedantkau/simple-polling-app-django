@@ -58,10 +58,18 @@ body {
     border: 1px solid hsl(0, 68%, 55%);
     border-radius: 3px;
 }
+.poll-form .poll-questions-box button:hover{
+    background-color: hsl(0, 74%, 59%);
+    cursor: pointer;
+}
 .poll-form .poll-questions-box .add-option, .poll-form .poll-questions-box .add-question{
     margin: 5px;
     background-color: hsl(133, 37%, 39%);
     border: 1px solid hsl(133, 37%, 39%);
+}
+.poll-form .poll-questions-box .add-option:hover, .poll-form .poll-questions-box .add-question:hover{
+    background-color: hsl(133, 36%, 38%);
+    cursor: pointer;
 }
 .poll-form .submit-form{
     width: calc(100% - 15px);
@@ -71,4 +79,8 @@ body {
     color: white;
     border: 1px solid rgb(0, 76, 130);
     border-radius: 3px;
+}
+.poll-form .submit-form:hover{
+    background-color: rgb(0, 89, 152);
+    cursor: pointer;
 }

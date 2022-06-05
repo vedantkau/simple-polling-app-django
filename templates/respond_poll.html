@@ -18,6 +18,7 @@
         <p>{{ poll.poll_description }}</p>
 
         <div class="poll-body">
+            {% if poll_question_data %}
             <form action="" method="post">
                 {% csrf_token %}
                 <input type="hidden" name="poll_id" value="{{ poll.poll_id }}">
@@ -30,10 +31,19 @@
                 <br>
                 <button type="submit">Submit</button>
             </form>
+            {% else %}
+            <p><b>Sorry, looks like this poll is disabled. You can view results for this poll.</b></p><br>
+            <button onclick="copy_link()">View results</button>
+            {% endif %}
         </div>
         {% else %}
         <h3>This poll doesn't exist</h3>
         {% endif %}
     </div>
+    <script>
+        function copy_link(){
+            location.href = 'http:\/\/{{ request.get_host }}/results?poll_id={{ poll.poll_id }}';
+        }
+    </script>
 </body>
 </html>

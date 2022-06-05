@@ -17,9 +17,12 @@ def respond_poll(request):
         # getting question, options data for a poll
         try:
             poll_data = app_models.polls_list.objects.get(poll_id=request.GET.get('poll_id'))
-            poll_question_data = app_models.poll_questions.objects.filter(poll_id=request.GET.get('poll_id'))
-            for questions in poll_question_data:
-                questions.question_options = questions.question_options.split("|")
+            if poll_data.disabled:
+                poll_question_data = None
+            else:
+                poll_question_data = app_models.poll_questions.objects.filter(poll_id=request.GET.get('poll_id'))
+                for questions in poll_question_data:
+                    questions.question_options = questions.question_options.split("|")
 
         except ObjectDoesNotExist:
             poll_data = None

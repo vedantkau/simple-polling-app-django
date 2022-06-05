@@ -1,3 +1,4 @@
 polling_app.sqlite3
 models/migrations/**
 logs/**
+polling_app/secret_key.txt

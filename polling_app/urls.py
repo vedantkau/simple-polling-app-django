@@ -18,9 +18,23 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+import subprocess
+import sys
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('create_poll.urls')),
     path('results', include('poll_results.urls')),
     path('respond', include('respond_poll.urls'))
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+poll_cleaner_script = None
+
+def poll_cleaner():
+    #Start poll_cleaner script to run in background
+    global poll_cleaner_script
+    project_base_dir = settings.BASE_DIR
+    poll_cleaner_script = subprocess.Popen(["python", f"{project_base_dir}/poll_cleaner/poll_cleaner.py"], shell=True)
+
+if sys.argv == ['manage.py', 'runserver']:
+    poll_cleaner()

@@ -51,3 +51,7 @@ body {
     border: 1px solid rgb(0, 76, 130);
     border-radius: 3px;
 }
+.share-links-box button:hover{
+    background-color: rgb(0, 89, 152);
+    cursor: pointer;
+}

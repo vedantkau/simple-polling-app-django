@@ -16,9 +16,8 @@
         {% if poll %}
         <h3>You're responding to poll: {{ poll.poll_name }}</h3>
         <p>{{ poll.poll_description }}</p>
-
         <div class="poll-body">
-            {% if poll_question_data %}
+            {% if poll_questions %}
             <form action="" method="post">
                 {% csrf_token %}
                 <input type="hidden" name="poll_id" value="{{ poll.poll_id }}">
